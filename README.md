@@ -53,14 +53,19 @@ treated as an infallible security scanner.
 
 ## Current Status
 
-**Phase:** Day 1 — Project foundation
+**Phase:** Foundation and continuous integration
 
-**Implemented:** Repository and initial project documentation are
-being established.
+**Implemented:**
+- Initial product vision and security boundaries.
+- Initial architecture and 90-day roadmap.
+- Python package structure and health-status function.
+- Automated test suite and Ruff linting.
+- GitHub Actions CI workflow for pushes and pull requests.
 
-**Next milestone:** Define the product requirements, assessment scope,
-architecture, and security boundaries before implementing the first
-assessment check.
+**Verified locally:** Ruff passes and the initial test passes.
+
+**Next milestone:** Build the first non-destructive website security
+check against a controlled demonstration target.
 
 See [ROADMAP.md](ROADMAP.md) for the development plan and
 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the planned design.
