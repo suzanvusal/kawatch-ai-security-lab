@@ -51,26 +51,26 @@ already implements them.
 AI will assist with explanations and prioritization. It will not be
 treated as an infallible security scanner.
 
-## Current Status
+### Current Status
 
-**Phase:** Foundation and initial security analysis
+**Phase:** Foundation and local security assessment prototype
 
 **Implemented:**
-- Initial product vision, requirements, and security boundaries.
-- Architecture documentation and 90-day roadmap.
-- Python package structure and health-status function.
-- Ruff linting, pytest tests, and GitHub Actions CI.
-- Initial security-header analyzer using supplied response headers.
-- Automated tests covering missing headers, header-name capitalization,
-  HTTPS-specific HSTS checks, and frame-protection detection.
+- Product vision, requirements, security boundaries, and roadmap.
+- Python package foundation and automated CI.
+- Security-header analysis for selected HTTP response headers.
+- Local HTTP response collection restricted to 127.0.0.1.
+- Local demonstration server for controlled testing.
+- Automated tests for header analysis and HTTP collection.
 
-**Validation:** Ruff passes and all 5 tests pass locally.
+**Validation:** Ruff passes and all 10 tests pass locally without warnings.
 
-**Current limitation:** The analyzer does not make network requests or
-verify whether existing security policies are effective.
+**Current limitations:** The collector supports local HTTP only. The
+analyzer checks selected header presence, not the effectiveness of
+security policies. No external website scanning is implemented.
 
-**Next milestone:** Build a controlled local demonstration target and
-prepare a safe, testable way to collect HTTP response headers.
+**Next milestone:** Integrate HTTP collection and header analysis into
+a command-line assessment that produces readable security findings.
 
 
 

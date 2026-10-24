@@ -71,3 +71,30 @@ known limitations, and upcoming objectives.
 - Commit the implementation and verify GitHub Actions.
 - Build a controlled local HTTP demonstration target.
 - Later, add safe HTTP response collection with explicit scope restrictions.
+
+## Day 4 — Local HTTP header collection
+
+### Completed
+- Added a local HTTP response collector.
+- Restricted the collector to HTTP on 127.0.0.1.
+- Added a configurable request timeout.
+- Disabled automatic redirect following.
+- Created a local demonstration HTTP server.
+- Added tests for header collection and URL restrictions.
+- Fixed test import ordering and removed a pytest collection warning.
+
+### Validation
+- Ruff: passed.
+- Pytest: 10 tests passed without warnings.
+- Git whitespace validation: passed.
+
+### Current limitations
+- The collector supports only local HTTP targets.
+- HTTPS assessment is not implemented.
+- The collector gathers response headers but does not yet produce a complete security report.
+- The demonstration server is intended for local development only.
+
+### Next steps
+- Integrate the collector with the security-header analyzer.
+- Display findings in a readable command-line report.
+- Test the complete local assessment workflow.
