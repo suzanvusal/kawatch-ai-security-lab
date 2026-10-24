@@ -53,19 +53,26 @@ treated as an infallible security scanner.
 
 ## Current Status
 
-**Phase:** Foundation and continuous integration
+**Phase:** Foundation and initial security analysis
 
 **Implemented:**
-- Initial product vision and security boundaries.
-- Initial architecture and 90-day roadmap.
+- Initial product vision, requirements, and security boundaries.
+- Architecture documentation and 90-day roadmap.
 - Python package structure and health-status function.
-- Automated test suite and Ruff linting.
-- GitHub Actions CI workflow for pushes and pull requests.
+- Ruff linting, pytest tests, and GitHub Actions CI.
+- Initial security-header analyzer using supplied response headers.
+- Automated tests covering missing headers, header-name capitalization,
+  HTTPS-specific HSTS checks, and frame-protection detection.
 
-**Verified locally:** Ruff passes and the initial test passes.
+**Validation:** Ruff passes and all 5 tests pass locally.
 
-**Next milestone:** Build the first non-destructive website security
-check against a controlled demonstration target.
+**Current limitation:** The analyzer does not make network requests or
+verify whether existing security policies are effective.
+
+**Next milestone:** Build a controlled local demonstration target and
+prepare a safe, testable way to collect HTTP response headers.
+
+
 
 See [ROADMAP.md](ROADMAP.md) for the development plan and
 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the planned design.

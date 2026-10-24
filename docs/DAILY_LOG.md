@@ -42,3 +42,32 @@ known limitations, and upcoming objectives.
 - Confirm the CI workflow succeeds on GitHub.
 - Define a controlled demonstration target.
 - Implement and test the first non-destructive website security check.
+
+## Day 3 — Initial security-header analyzer
+
+### Completed
+- Added a security-header analysis module.
+- Added checks for Content-Security-Policy.
+- Added checks for X-Content-Type-Options.
+- Added checks for Referrer-Policy.
+- Added frame-protection checks using CSP frame-ancestors or X-Frame-Options.
+- Added an HTTPS-specific Strict-Transport-Security check.
+- Added automated tests for missing headers, case-insensitive names,
+  HTTP handling, and frame-protection detection.
+
+### Validation
+- Ruff: passed.
+- Pytest: 5 tests passed.
+- Git whitespace validation: passed.
+
+### Current limitations
+- Analysis uses supplied headers; no network requests are made.
+- Header presence does not guarantee secure configuration.
+- Findings are preliminary indicators, not proof of exploitable vulnerabilities.
+- Severity classifications are initial heuristics and need further review.
+
+### Next steps
+- Document the analyzer in the README.
+- Commit the implementation and verify GitHub Actions.
+- Build a controlled local HTTP demonstration target.
+- Later, add safe HTTP response collection with explicit scope restrictions.
