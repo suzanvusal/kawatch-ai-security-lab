@@ -53,18 +53,15 @@ treated as an infallible security scanner.
 
 ### Current Status
 
-**Phase:** Foundation and local security assessment prototype
+- **Day 1:** Project foundation and security boundaries established.
+- **Day 2:** Python package, initial tests, and GitHub Actions CI.
+- **Day 3:** Security-header analysis engine.
+- **Day 4:** Local HTTP response-header collection and demo server.
+- **Day 5:** Integrated local assessment CLI and end-to-end demonstration.
 
-**Implemented:**
-- Product vision, requirements, security boundaries, and roadmap.
-- Python package foundation and automated CI.
-- Security-header analysis for selected HTTP response headers.
-- Local HTTP response collection restricted to 127.0.0.1.
-- Local demonstration server for controlled testing.
-- Automated tests for header analysis and HTTP collection.
+**Current milestone:** The local demo can collect HTTP response headers, analyze missing security protections, and display findings with recommendations.
 
-**Validation:** Ruff passes and all 10 tests pass locally without warnings.
-
+**Validation:** Ruff checks passing; 11 automated tests passing.
 **Current limitations:** The collector supports local HTTP only. The
 analyzer checks selected header presence, not the effectiveness of
 security policies. No external website scanning is implemented.

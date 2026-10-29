@@ -83,6 +83,19 @@ known limitations, and upcoming objectives.
 - Added tests for header collection and URL restrictions.
 - Fixed test import ordering and removed a pytest collection warning.
 
+### Day 5 — Local assessment integration
+
+- Connected the local HTTP header collector to the security-header analyzer.
+- Added a command-line interface in `src/kawatch/cli.py`.
+- Added automated tests for the assessment integration.
+- Verified the live local demo returned HTTP 200.
+- Detected three expected security-header findings.
+- Ruff checks passed.
+- All 11 tests passed.
+- Assessment remains restricted to the local demo address (`127.0.0.1`).
+
+**Result:** Completed the first end-to-end local security-header assessment workflow.
+
 ### Validation
 - Ruff: passed.
 - Pytest: 10 tests passed without warnings.
