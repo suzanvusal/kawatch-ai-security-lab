@@ -53,15 +53,18 @@ treated as an infallible security scanner.
 
 ### Current Status
 
-- **Day 1:** Project foundation and security boundaries established.
-- **Day 2:** Python package, initial tests, and GitHub Actions CI.
+- **Day 1:** Project foundation and security boundaries.
+- **Day 2:** Python package, automated tests, and GitHub Actions CI.
 - **Day 3:** Security-header analysis engine.
 - **Day 4:** Local HTTP response-header collection and demo server.
-- **Day 5:** Integrated local assessment CLI and end-to-end demonstration.
+- **Day 5:** Integrated local security assessment CLI.
+- **Day 6:** JSON security assessment report generation.
 
-**Current milestone:** The local demo can collect HTTP response headers, analyze missing security protections, and display findings with recommendations.
+**Current milestone:** Kawatch can collect local HTTP response headers, identify missing security protections, display findings, and save structured JSON reports.
 
-**Validation:** Ruff checks passing; 11 automated tests passing.
+**Validation:** Ruff checks passing; 12 automated tests passing.
+
+
 **Current limitations:** The collector supports local HTTP only. The
 analyzer checks selected header presence, not the effectiveness of
 security policies. No external website scanning is implemented.

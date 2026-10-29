@@ -95,6 +95,18 @@ known limitations, and upcoming objectives.
 - Assessment remains restricted to the local demo address (`127.0.0.1`).
 
 **Result:** Completed the first end-to-end local security-header assessment workflow.
+### Day 6 — JSON security assessment reports
+
+- Created a JSON report generator.
+- Added assessment timestamps, target address, and HTTP status.
+- Added a summary counting findings by severity.
+- Included individual findings and recommendations.
+- Integrated report generation into the command-line application.
+- Successfully generated `reports/latest-assessment.json`.
+- Ruff checks passed.
+- All 12 automated tests passed.
+
+**Result:** Kawatch can now save structured security assessment reports for future review and analysis.
 
 ### Validation
 - Ruff: passed.
