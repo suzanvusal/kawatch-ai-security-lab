@@ -64,6 +64,12 @@ Day 7 complete:
 - The latest assessment is also kept in reports/latest-assessment.json.
 - Automated tests verify both report outputs.
 
+Day 8 complete:
+- Added a JSON-based development task tracker.
+- Displays completed days, the current task, and the next planned task.
+- Includes automated validation and tests.
+
+
 **Current milestone:** Kawatch can collect local HTTP response headers, identify missing security protections, display findings, and save structured JSON reports.
 
 **Validation:** Ruff checks passing; 12 automated tests passing.

@@ -133,3 +133,13 @@ known limitations, and upcoming objectives.
 - 12 automated tests passed.
 
 **Result:** Kawatch now preserves assessment history instead of overwriting the only report.
+
+### Day 8 — Project progress tracker
+- Added project_tasks.json as the development task source of truth.
+- Created a progress tracker to identify completed, current, and next tasks.
+- Added validation for missing task data and current-day tasks.
+- Added automated tests for progress tracking.
+- Ruff checks passed.
+- 15 automated tests passed.
+
+**Result:** Kawatch can now identify its development progress and next planned task.
