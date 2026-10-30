@@ -155,3 +155,15 @@ known limitations, and upcoming objectives.
 - 18 automated tests passed.
 
 **Result:** Kawatch can now summarize historical security assessments and track changes in finding counts.
+
+### Day 10 — Assessment report validation
+- Added validation for required report fields and data types.
+- Checked timestamp, HTTP status, finding structure, and severity values.
+- Verified severity totals match the total finding count.
+- Connected validation to the assessment history summary.
+- Invalid or malformed reports are skipped and reported.
+- Added automated validation and history integration tests.
+- Ruff checks passed.
+- 26 automated tests passed.
+
+**Result:** Kawatch validates assessment reports before including them in historical summaries.

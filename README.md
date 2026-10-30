@@ -76,6 +76,11 @@ Day 9 complete:
 - Compares finding counts between recent assessments.
 - Includes automated tests.
 
+Day 10 complete:
+- Added assessment report validation.
+- Checks required fields, data types, and severity consistency.
+- Invalid reports are excluded from history summaries and reported.
+- Added automated validation tests.
 
 **Current milestone:** Kawatch can collect local HTTP response headers, identify missing security protections, display findings, and save structured JSON reports.
 

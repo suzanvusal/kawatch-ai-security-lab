@@ -1,18 +1,35 @@
-"""Summarize historical Kawatch security assessment reports."""
+"""Summarize validated Kawatch security assessment reports."""
 
 import json
 from pathlib import Path
 from typing import Any
 
+from kawatch.validation import validate_report
+
 
 def summarize_history(history_dir: Path) -> dict[str, Any]:
-    """Summarize saved assessment reports in chronological order."""
+    """Summarize valid reports and identify invalid report files."""
     report_files = sorted(history_dir.glob("assessment-*.json"))
 
     reports = []
+    invalid_reports = []
 
     for report_file in report_files:
-        report = json.loads(report_file.read_text(encoding="utf-8"))
+        try:
+            report = json.loads(report_file.read_text(encoding="utf-8"))
+            errors = validate_report(report)
+        except (OSError, json.JSONDecodeError) as error:
+            errors = [f"Could not read JSON report: {error}"]
+
+        if errors:
+            invalid_reports.append(
+                {
+                    "file": report_file.name,
+                    "errors": errors,
+                }
+            )
+            continue
+
         reports.append(report)
 
     if not reports:
@@ -22,6 +39,7 @@ def summarize_history(history_dir: Path) -> dict[str, Any]:
             "severity": {"high": 0, "medium": 0, "low": 0},
             "latest_assessment": None,
             "finding_change": None,
+            "invalid_reports": invalid_reports,
         }
 
     total_findings = 0
@@ -29,7 +47,6 @@ def summarize_history(history_dir: Path) -> dict[str, Any]:
 
     for report in reports:
         summary = report["summary"]
-
         total_findings += summary["total_findings"]
 
         for level in severity:
@@ -42,7 +59,6 @@ def summarize_history(history_dir: Path) -> dict[str, Any]:
     if len(reports) >= 2:
         previous_count = reports[-2]["summary"]["total_findings"]
         latest_count = latest_assessment["summary"]["total_findings"]
-
         finding_change = latest_count - previous_count
 
     return {
@@ -51,17 +67,17 @@ def summarize_history(history_dir: Path) -> dict[str, Any]:
         "severity": severity,
         "latest_assessment": latest_assessment["generated_at"],
         "finding_change": finding_change,
+        "invalid_reports": invalid_reports,
     }
 
 
 def main() -> None:
     """Print a summary of historical assessments."""
-    history_dir = Path("reports/history")
-    summary = summarize_history(history_dir)
+    summary = summarize_history(Path("reports/history"))
 
     print("Kawatch Assessment History")
     print("-" * 40)
-    print(f"Total assessments: {summary['total_assessments']}")
+    print(f"Valid assessments: {summary['total_assessments']}")
     print(f"Total findings: {summary['total_findings']}")
 
     print("Severity breakdown:")
@@ -73,13 +89,21 @@ def main() -> None:
     change = summary["finding_change"]
 
     if change is None:
-        print("Finding change: Not enough assessments to compare.")
+        print("Finding change: Not enough valid assessments to compare.")
     elif change > 0:
         print(f"Finding change: Increased by {change}")
     elif change < 0:
         print(f"Finding change: Decreased by {abs(change)}")
     else:
         print("Finding change: No change")
+
+    invalid_reports = summary["invalid_reports"]
+    print(f"Invalid reports skipped: {len(invalid_reports)}")
+
+    for report in invalid_reports:
+        print(f"\nInvalid file: {report['file']}")
+        for error in report["errors"]:
+            print(f"  - {error}")
 
 
 if __name__ == "__main__":
