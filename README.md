@@ -69,6 +69,13 @@ Day 8 complete:
 - Displays completed days, the current task, and the next planned task.
 - Includes automated validation and tests.
 
+Day 9 complete:
+- Added an assessment history summary.
+- Calculates total assessments and finding severity counts.
+- Identifies the latest assessment.
+- Compares finding counts between recent assessments.
+- Includes automated tests.
+
 
 **Current milestone:** Kawatch can collect local HTTP response headers, identify missing security protections, display findings, and save structured JSON reports.
 

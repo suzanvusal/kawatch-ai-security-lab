@@ -143,3 +143,15 @@ known limitations, and upcoming objectives.
 - 15 automated tests passed.
 
 **Result:** Kawatch can now identify its development progress and next planned task.
+
+### Day 9 — Assessment history summary
+- Added a history summary module to read saved assessment reports.
+- Calculated total assessments and total findings.
+- Added high, medium, and low severity totals.
+- Identified the latest assessment.
+- Compared finding counts between the two most recent assessments.
+- Added tests for empty history, multiple reports, and single-report history.
+- Ruff checks passed.
+- 18 automated tests passed.
+
+**Result:** Kawatch can now summarize historical security assessments and track changes in finding counts.
