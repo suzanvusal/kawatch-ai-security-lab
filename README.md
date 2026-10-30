@@ -59,6 +59,10 @@ treated as an infallible security scanner.
 - **Day 4:** Local HTTP response-header collection and demo server.
 - **Day 5:** Integrated local security assessment CLI.
 - **Day 6:** JSON security assessment report generation.
+Day 7 complete:
+- Security assessment reports are saved as timestamped historical files.
+- The latest assessment is also kept in reports/latest-assessment.json.
+- Automated tests verify both report outputs.
 
 **Current milestone:** Kawatch can collect local HTTP response headers, identify missing security protections, display findings, and save structured JSON reports.
 

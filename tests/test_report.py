@@ -7,7 +7,7 @@ from kawatch.security_headers import SecurityHeaderFinding
 
 
 def test_save_assessment_report(tmp_path):
-    """The report should contain assessment details and findings."""
+    """The latest and historical reports should contain assessment details."""
 
     findings = [
         SecurityHeaderFinding(
@@ -24,7 +24,7 @@ def test_save_assessment_report(tmp_path):
         ),
     ]
 
-    output_path = tmp_path / "reports" / "assessment.json"
+    output_path = tmp_path / "reports" / "latest-assessment.json"
 
     saved_path = save_assessment_report(
         url="http://127.0.0.1:8765",
@@ -35,11 +35,24 @@ def test_save_assessment_report(tmp_path):
 
     assert saved_path.exists()
 
-    report = json.loads(saved_path.read_text(encoding="utf-8"))
+    latest_report = json.loads(
+        saved_path.read_text(encoding="utf-8")
+    )
 
-    assert report["target"] == "http://127.0.0.1:8765"
-    assert report["http_status"] == 200
-    assert report["summary"]["total_findings"] == 2
-    assert report["summary"]["medium"] == 1
-    assert report["summary"]["low"] == 1
-    assert len(report["findings"]) == 2
+    assert latest_report["target"] == "http://127.0.0.1:8765"
+    assert latest_report["http_status"] == 200
+    assert latest_report["summary"]["total_findings"] == 2
+    assert latest_report["summary"]["medium"] == 1
+    assert latest_report["summary"]["low"] == 1
+    assert len(latest_report["findings"]) == 2
+
+    history_dir = tmp_path / "reports" / "history"
+    history_files = list(history_dir.glob("assessment-*.json"))
+
+    assert len(history_files) == 1
+
+    historical_report = json.loads(
+        history_files[0].read_text(encoding="utf-8")
+    )
+
+    assert historical_report == latest_report

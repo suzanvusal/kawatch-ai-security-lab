@@ -123,3 +123,13 @@ known limitations, and upcoming objectives.
 - Integrate the collector with the security-header analyzer.
 - Display findings in a readable command-line report.
 - Test the complete local assessment workflow.
+
+### Day 7 — Report history
+- Added timestamped historical JSON reports under reports/history/.
+- Kept reports/latest-assessment.json updated with the most recent assessment.
+- Added automated tests verifying historical and latest reports.
+- Verified repeated local assessments create separate history files.
+- Ruff checks passed.
+- 12 automated tests passed.
+
+**Result:** Kawatch now preserves assessment history instead of overwriting the only report.

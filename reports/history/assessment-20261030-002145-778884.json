@@ -1,0 +1,32 @@
+{
+    "project": "Kawatch AI Security Lab",
+    "generated_at": "2026-10-30T00:21:45.778884+00:00",
+    "target": "http://127.0.0.1:8765",
+    "http_status": 200,
+    "summary": {
+        "total_findings": 3,
+        "high": 0,
+        "medium": 2,
+        "low": 1
+    },
+    "findings": [
+        {
+            "header": "content-security-policy",
+            "severity": "Medium",
+            "message": "Content Security Policy is missing.",
+            "recommendation": "Define a Content Security Policy suited to the application."
+        },
+        {
+            "header": "referrer-policy",
+            "severity": "Low",
+            "message": "Referrer-Policy is missing.",
+            "recommendation": "Set a Referrer-Policy appropriate for the application."
+        },
+        {
+            "header": "x-frame-options",
+            "severity": "Medium",
+            "message": "No recognized frame-protection header was found.",
+            "recommendation": "Configure CSP frame-ancestors or X-Frame-Options to suit the application's framing requirements."
+        }
+    ]
+}

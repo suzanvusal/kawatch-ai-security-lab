@@ -14,11 +14,13 @@ def save_assessment_report(
     findings: list[SecurityHeaderFinding],
     output_path: Path,
 ) -> Path:
-    """Save assessment results as a structured JSON report."""
+    """Save the latest report and preserve a historical copy."""
+
+    generated_at = datetime.now(timezone.utc)
 
     report = {
         "project": "Kawatch AI Security Lab",
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_at": generated_at.isoformat(),
         "target": url,
         "http_status": status_code,
         "summary": {
@@ -30,10 +32,20 @@ def save_assessment_report(
         "findings": [asdict(finding) for finding in findings],
     }
 
+    report_json = json.dumps(report, indent=4)
+
+    # Create a unique filename for this assessment.
+    timestamp = generated_at.strftime("%Y%m%d-%H%M%S-%f")
+    history_dir = output_path.parent / "history"
+    history_dir.mkdir(parents=True, exist_ok=True)
+
+    history_path = history_dir / f"assessment-{timestamp}.json"
+
+    # Save the historical report.
+    history_path.write_text(report_json, encoding="utf-8")
+
+    # Also update the latest report.
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(
-        json.dumps(report, indent=4),
-        encoding="utf-8",
-    )
+    output_path.write_text(report_json, encoding="utf-8")
 
     return output_path
