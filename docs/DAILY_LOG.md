@@ -167,3 +167,16 @@ known limitations, and upcoming objectives.
 - 26 automated tests passed.
 
 **Result:** Kawatch validates assessment reports before including them in historical summaries.
+
+### Day 11 — AI agent task definitions
+
+- Created a structured JSON task definition for future AI-assisted development.
+- Defined each task's objective, allowed files, and acceptance criteria.
+- Listed approved quality checks: Ruff, pytest, and diff check.
+- Added constraints requiring human review and preventing automatic PR merges.
+- Created a task specification module to load and validate task definitions.
+- Added automated tests for valid tasks, missing fields, invalid checks, unsafe paths, and human review requirements.
+- Ruff checks passed.
+- 33 automated tests passed.
+
+**Result:** Kawatch can now load and validate structured task instructions for future AI-assisted development. Actual file-change restrictions will be enforced by the future agent runner.

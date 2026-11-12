@@ -1,0 +1,31 @@
+{
+    "task_id": "day-012-history-csv-export",
+    "title": "Add CSV export for assessment history",
+    "objective": "Allow users to export assessment history summaries as a CSV file.",
+    "status": "planned",
+    "allowed_files": [
+        "src/kawatch/history.py",
+        "tests/test_history.py",
+        "README.md",
+        "docs/DAILY_LOG.md"
+    ],
+    "acceptance_criteria": [
+        "Export historical assessment data into a CSV file.",
+        "Include assessment date and finding severity counts.",
+        "Handle empty assessment history safely.",
+        "Add automated tests for CSV export."
+    ],
+    "checks": [
+        "ruff",
+        "pytest",
+        "diff_check"
+    ],
+    "constraints": [
+        "Do not modify the main branch directly.",
+        "Do not change existing JSON report formats.",
+        "Do not modify files outside allowed_files.",
+        "Do not merge pull requests automatically.",
+        "Require human approval before merging."
+    ],
+    "requires_human_review": true
+}

@@ -84,7 +84,7 @@ Day 10 complete:
 
 **Current milestone:** Kawatch can collect local HTTP response headers, identify missing security protections, display findings, and save structured JSON reports.
 
-**Validation:** Ruff checks passing; 12 automated tests passing.
+**Validation:** Ruff checks passing; 33 automated tests passing.
 
 
 **Current limitations:** The collector supports local HTTP only. The
@@ -141,3 +141,11 @@ Contributions will be welcomed as the project matures. See
 
 This is an experimental project under active development. It is not
 yet a production security service and must not be represented as one.
+
+Day 11 complete:
+
+- Added structured JSON task definitions for AI-assisted development.
+- Defined task objectives, allowed files, and acceptance criteria.
+- Added validation for task instructions and approved quality checks.
+- Required human review and prohibited automatic PR merging through task constraints.
+- Added automated task validation tests.
